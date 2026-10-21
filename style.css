@@ -885,19 +885,3 @@ p:last-child {
   }
 }
 
-/* ================= ANTI-HIJACK & SECURITY PROTECTION ================= */
-/* Bloqueia qualquer elemento de thumbnail, popup ou botão concorrente da VTurb */
-vturb-smartplayer [class*="thumbsniper"],
-vturb-smartplayer [id*="thumbsniper"],
-vturb-smartplayer [class*="smartplayer-button"],
-vturb-smartplayer [class*="button"],
-vturb-smartplayer a,
-.smartplayer-thumbsniper,
-[id*="thumbsniper"],
-[id*="69e249958a3e9abfbddf2b41"],
-[id*="button"] a[href*="hotmart"] {
-  display: none !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-}

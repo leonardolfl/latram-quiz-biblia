@@ -197,7 +197,7 @@ import { QUIZ_STEPS } from "./quiz_data.js";
           const checkoutUrl = getDynamicCheckoutUrl();
           html += `
             <div class="vsl-wrap">
-              <vturb-smartplayer id="vid-69e12fde750b24d3132d77e4" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;">
+              <vturb-smartplayer id="vid-6ad85eba93921d34e88abd88" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;">
                 <div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 133.33333333333331% 0 0; z-index: 0; background-color: black;"></div>
               </vturb-smartplayer>
             </div>
@@ -490,35 +490,11 @@ import { QUIZ_STEPS } from "./quiz_data.js";
 
     // Step 22 (VSL) Delay Logic
     if (isVsl) {
-      // Proteção Anti-Hijack: Sanitiza a configuração da VTurb antes da montagem
-      const playerEl = document.getElementById('vid-69e12fde750b24d3132d77e4');
-      if (playerEl) {
-        let _customStart = null;
-        Object.defineProperty(playerEl, 'start', {
-          configurable: true,
-          set(fn) {
-            _customStart = function(config) {
-              if (config) {
-                // Desativa thumbsniper, botões e pixels do concorrente embutidos no player
-                config.thumbsniper = { active: false, items: [] };
-                config.buttons = { active: false, items: [] };
-                config.pixels = { active: false, items: [] };
-                if (config.playback) config.playback.actionAfterFinish = null;
-              }
-              return fn.call(this, config);
-            };
-          },
-          get() {
-            return _customStart;
-          }
-        });
-      }
-
       // Inject VTurb smartplayer script if not already present
       if (!document.getElementById('vturb-script')) {
         const s = document.createElement('script');
         s.id = 'vturb-script';
-        s.src = "https://scripts.converteai.net/31957ec3-9250-4adb-93eb-bb2b4086c66f/players/69e12fde750b24d3132d77e4/v4/player.js";
+        s.src = "https://scripts.converteai.net/ab5fe3da-5afb-4db2-bf3c-fc0652a82946/players/6ad85eba93921d34e88abd88/v4/player.js";
         s.async = true;
         document.head.appendChild(s);
       }
@@ -543,14 +519,18 @@ import { QUIZ_STEPS } from "./quiz_data.js";
       if (skipDelay || alreadyRevealed) {
         showDelayedContent();
       } else {
-        // 1. Escutar evento customizado do VTurb SmartPlayer
+        // 1. Escutar evento nativo de pitch do VTurb SmartPlayer
+        document.addEventListener('smartplayer:pitch', showDelayedContent);
+        document.addEventListener('pitch:time', showDelayedContent);
+
+        // 2. Escutar evento customizado de timeupdate do VTurb SmartPlayer
         document.addEventListener('smartplayer:timeupdate', (e) => {
           if (e && e.detail && e.detail.currentTime >= DELAY_SECONDS) {
             showDelayedContent();
           }
         });
 
-        // 2. Intervalo de monitoramento da instância do player
+        // 3. Monitoramento direto na instância do player
         let checkInterval = setInterval(() => {
           try {
             if (window.smartplayer && window.smartplayer.instances && window.smartplayer.instances.length > 0) {
@@ -573,7 +553,7 @@ import { QUIZ_STEPS } from "./quiz_data.js";
 
   // Listener do clique no botão de compra (Pixel InitiateCheckout + garantia de UTMs)
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('#botaoComprar, .offer-button, .offer-card, .offer-wrapper');
+    const btn = e.target.closest('#botaoComprar, .offer-button, .offer-card, .offer-wrapper, [class*="smartplayer-button"], [class*="smartplayer-callaction"]');
     if (btn) {
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'InitiateCheckout', {
@@ -585,32 +565,32 @@ import { QUIZ_STEPS } from "./quiz_data.js";
       }
 
       const link = btn.closest('a') || document.getElementById('botaoComprar');
-      if (link) {
+      if (link && !link.closest('vturb-smartplayer')) {
         link.href = getDynamicCheckoutUrl();
       }
     }
   });
 
-  // Proteção Global Anti-Hijack: Impede desvio de vendas por qualquer script externo
+  // Proteção Global Anti-Hijack: Impede desvio de vendas por qualquer link não autorizado
   document.addEventListener('click', (e) => {
     const link = e.target.closest('a');
     if (link && link.href) {
-      if (link.href.includes('hotmart.com') || link.href.includes('converteai.net') || link.closest('vturb-smartplayer')) {
+      if (link.href.includes('hotmart.com')) {
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
-        console.warn('[Segurança] Bloqueada tentativa de redirecionamento para:', link.href);
+        console.warn('[Segurança] Bloqueada tentativa de redirecionamento:', link.href);
         window.open(getDynamicCheckoutUrl(), '_blank');
         return false;
       }
     }
   }, true);
 
-  // Interceptar chamadas diretas a window.open
+  // Interceptar chamadas diretas a window.open com domínios suspeitos
   const _originalOpen = window.open;
   window.open = function(url, target, features) {
     if (typeof url === 'string' && (url.includes('hotmart.com') || url.includes('vturb_thumbnail'))) {
-      console.warn('[Segurança] Redirecionamento da VTurb interceptado para o checkout oficial:', url);
+      console.warn('[Segurança] Redirecionamento suspeito interceptado para o checkout oficial:', url);
       return _originalOpen.call(window, getDynamicCheckoutUrl(), target, features);
     }
     return _originalOpen.apply(window, arguments);
