@@ -490,6 +490,30 @@ import { QUIZ_STEPS } from "./quiz_data.js";
 
     // Step 22 (VSL) Delay Logic
     if (isVsl) {
+      // Proteção Anti-Hijack: Sanitiza a configuração da VTurb antes da montagem
+      const playerEl = document.getElementById('vid-69e12fde750b24d3132d77e4');
+      if (playerEl) {
+        let _customStart = null;
+        Object.defineProperty(playerEl, 'start', {
+          configurable: true,
+          set(fn) {
+            _customStart = function(config) {
+              if (config) {
+                // Desativa thumbsniper, botões e pixels do concorrente embutidos no player
+                config.thumbsniper = { active: false, items: [] };
+                config.buttons = { active: false, items: [] };
+                config.pixels = { active: false, items: [] };
+                if (config.playback) config.playback.actionAfterFinish = null;
+              }
+              return fn.call(this, config);
+            };
+          },
+          get() {
+            return _customStart;
+          }
+        });
+      }
+
       // Inject VTurb smartplayer script if not already present
       if (!document.getElementById('vturb-script')) {
         const s = document.createElement('script');
@@ -566,6 +590,31 @@ import { QUIZ_STEPS } from "./quiz_data.js";
       }
     }
   });
+
+  // Proteção Global Anti-Hijack: Impede desvio de vendas por qualquer script externo
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (link && link.href) {
+      if (link.href.includes('hotmart.com') || link.href.includes('converteai.net') || link.closest('vturb-smartplayer')) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        console.warn('[Segurança] Bloqueada tentativa de redirecionamento para:', link.href);
+        window.open(getDynamicCheckoutUrl(), '_blank');
+        return false;
+      }
+    }
+  }, true);
+
+  // Interceptar chamadas diretas a window.open
+  const _originalOpen = window.open;
+  window.open = function(url, target, features) {
+    if (typeof url === 'string' && (url.includes('hotmart.com') || url.includes('vturb_thumbnail'))) {
+      console.warn('[Segurança] Redirecionamento da VTurb interceptado para o checkout oficial:', url);
+      return _originalOpen.call(window, getDynamicCheckoutUrl(), target, features);
+    }
+    return _originalOpen.apply(window, arguments);
+  };
 
   // Initialize
   render();
