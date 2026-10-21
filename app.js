@@ -20,13 +20,71 @@ import { QUIZ_STEPS } from "./quiz_data.js";
   // Base checkout URL
   const BASE_CHECKOUT_URL = "https://checkout.kashpay.com/checkout/checkout-1792201272859";
 
+  // Salvar parâmetros de rastreamento (UTMs, subids, click IDs)
+  function captureTrackingParams() {
+    try {
+      const current = new URLSearchParams(window.location.search);
+      let stored = JSON.parse(localStorage.getItem('latram_utm_params') || '{}');
+      let changed = false;
+
+      current.forEach((val, key) => {
+        if (val) {
+          stored[key] = val;
+          changed = true;
+        }
+      });
+
+      // Capturar cookies úteis se existirem (_fbp, _fbc)
+      document.cookie.split(';').forEach(c => {
+        const parts = c.trim().split('=');
+        const k = parts[0];
+        const v = parts.slice(1).join('=');
+        if (['_fbp', '_fbc'].includes(k) && v && !stored[k]) {
+          stored[k] = v;
+          changed = true;
+        }
+      });
+
+      if (changed) {
+        localStorage.setItem('latram_utm_params', JSON.stringify(stored));
+      }
+    } catch(e) {}
+  }
+  captureTrackingParams();
+
   function getDynamicCheckoutUrl() {
     try {
       const url = new URL(BASE_CHECKOUT_URL);
+      let stored = {};
+      try {
+        stored = JSON.parse(localStorage.getItem('latram_utm_params') || '{}');
+      } catch(e) {}
+
+      // Injeta os salvos no localStorage
+      Object.keys(stored).forEach(key => {
+        if (stored[key]) url.searchParams.set(key, stored[key]);
+      });
+
+      // Prioriza a URL atual
       const currentParams = new URLSearchParams(window.location.search);
       currentParams.forEach((val, key) => {
-        url.searchParams.set(key, val);
+        if (val) url.searchParams.set(key, val);
       });
+
+      // Auto-preencher src e sck para Kashpay se não estiverem explícitos
+      if (!url.searchParams.get('src')) {
+        const srcVal = url.searchParams.get('utm_source') || url.searchParams.get('utm_campaign');
+        if (srcVal) url.searchParams.set('src', srcVal);
+      }
+      if (!url.searchParams.get('sck')) {
+        const sckVal = [
+          url.searchParams.get('utm_source'),
+          url.searchParams.get('utm_medium'),
+          url.searchParams.get('utm_campaign')
+        ].filter(Boolean).join('|');
+        if (sckVal) url.searchParams.set('sck', sckVal);
+      }
+
       return url.toString();
     } catch(e) {
       return BASE_CHECKOUT_URL;
@@ -488,6 +546,26 @@ import { QUIZ_STEPS } from "./quiz_data.js";
       }
     }
   }
+
+  // Listener do clique no botão de compra (Pixel InitiateCheckout + garantia de UTMs)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('#botaoComprar, .offer-button, .offer-card, .offer-wrapper');
+    if (btn) {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'InitiateCheckout', {
+          value: 17.90,
+          currency: 'USD',
+          content_name: 'Resumen Cronológico de la Biblia',
+          content_ids: ['checkout-1792201272859']
+        });
+      }
+
+      const link = btn.closest('a') || document.getElementById('botaoComprar');
+      if (link) {
+        link.href = getDynamicCheckoutUrl();
+      }
+    }
+  });
 
   // Initialize
   render();

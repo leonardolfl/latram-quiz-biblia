@@ -12,3 +12,4 @@ clone_steps/
 test_*.js
 test_*.mjs
 capture_*.mjs
+.vercel
