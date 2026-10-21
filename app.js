@@ -210,7 +210,7 @@ import { QUIZ_STEPS } from "./quiz_data.js";
               <a id="botaoComprar" href="${checkoutUrl}" target="_blank" rel="noopener noreferrer">
                 <div class="offer-wrapper">
                   <div class="offer-button">
-                    Haz clic aquí para assegurar tu material
+                    Haz clic aquí para asegurar tu material
                   </div>
                   <div class="offer-card">
                     <div class="offer-header">Recibe ahora!</div>
