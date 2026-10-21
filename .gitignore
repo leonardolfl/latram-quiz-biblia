@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.DS_Store
+.vercel/
+scratch/
+real_steps/
+clone_steps/
+*.png
+*.jpg
+*.jpeg
+!public/images/*
+test_*.js
+test_*.mjs
+capture_*.mjs

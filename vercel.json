@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/appbiblia",
+      "destination": "/appbiblia/index.html"
+    },
+    {
+      "source": "/appbiblia/",
+      "destination": "/appbiblia/index.html"
+    }
+  ]
+}
