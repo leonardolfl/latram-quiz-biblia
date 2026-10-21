@@ -207,7 +207,7 @@ import { QUIZ_STEPS } from "./quiz_data.js";
               <div style="text-align:center; margin: 8px 0 4px;">
                 <div class="badge-urgency">⏰ ¡Último día a este precio!</div>
               </div>
-              <a id="botaoComprar" href="${checkoutUrl}" target="_blank" rel="noopener noreferrer">
+              <a id="botaoComprar" href="${checkoutUrl}" target="_self">
                 <div class="offer-wrapper">
                   <div class="offer-button">
                     Haz clic aquí para asegurar tu material
