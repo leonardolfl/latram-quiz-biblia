@@ -8,6 +8,14 @@
     {
       "source": "/appbiblia/",
       "destination": "/appbiblia/index.html"
+    },
+    {
+      "source": "/fofuras",
+      "destination": "/fofuras/index.html"
+    },
+    {
+      "source": "/fofuras/",
+      "destination": "/fofuras/index.html"
     }
   ]
 }

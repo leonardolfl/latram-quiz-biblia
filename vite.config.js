@@ -7,11 +7,14 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 export default defineConfig({
   plugins: [
     {
-      name: 'rewrite-appbiblia',
+      name: 'rewrite-routes',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           if (req.url === '/appbiblia' || req.url === '/appbiblia/') {
             req.url = '/appbiblia/index.html';
+          }
+          if (req.url === '/fofuras' || req.url === '/fofuras/') {
+            req.url = '/fofuras/index.html';
           }
           next();
         });
@@ -23,6 +26,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         appbiblia: resolve(__dirname, 'appbiblia/index.html'),
+        fofuras: resolve(__dirname, 'fofuras/index.html'),
       },
     },
   },
