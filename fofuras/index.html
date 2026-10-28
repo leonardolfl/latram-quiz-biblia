@@ -312,30 +312,97 @@ window.addEventListener("load", function () { window.scrollTo(0, 0); });
   var overlay = document.getElementById('ps-preupsell-overlay');
   var BASICO_LINK = 'https://pay.cakto.com.br/qjdeaoq';
 
+  function appendCurrentParams(url) {
+    try {
+      var search = window.location.search;
+      if (!search || search.length <= 1) return url;
+      var sep = url.indexOf('?') === -1 ? '?' : '&';
+      var params = search.charAt(0) === '?' ? search.slice(1) : search;
+      return url + sep + params;
+    } catch (e) {
+      return url;
+    }
+  }
+
+  window.trackInitiateCheckoutAndGo = function (plano, valor, url) {
+    try {
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "InitiateCheckout", {
+          value: valor,
+          currency: "BRL",
+          content_name: plano === "completo" ? "Pacote Completo - Fofuras de Papel" : (plano === "upgrade" ? "Upgrade Pacote Completo" : "Plano Básico"),
+          content_type: "product"
+        });
+      }
+    } catch (err) {
+      console.warn("[Tracking] Falha ao disparar fbq:", err);
+    }
+
+    // Aguarda 250ms para garantir que a requisicao de rede do Meta Pixel seja disparada antes de descarregar a pagina
+    setTimeout(function () {
+      window.location.href = url;
+    }, 250);
+  };
+
+  window.trackInitiateCheckout = function (plano, valor) {
+    try {
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "InitiateCheckout", {
+          value: valor,
+          currency: "BRL",
+          content_name: plano === "completo" ? "Pacote Completo - Fofuras de Papel" : (plano === "upgrade" ? "Upgrade Pacote Completo" : "Plano Básico"),
+          content_type: "product"
+        });
+      }
+    } catch (e) {}
+  };
+
   window.psOpenPreUpsell = function () {
-    overlay.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+    if (overlay) {
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
   };
 
   window.psClosePreUpsell = function () {
-    overlay.style.display = 'none';
-    document.body.style.overflow = '';
+    if (overlay) {
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
   };
 
   window.psDeclinePreUpsell = function () {
-    overlay.style.display = 'none';
-    document.body.style.overflow = '';
-    trackInitiateCheckout("basico", 12.90);
-    window.location.href = BASICO_LINK;
+    if (overlay) {
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    var target = appendCurrentParams(BASICO_LINK);
+    window.trackInitiateCheckoutAndGo("basico", 12.90, target);
   };
 
-  overlay.addEventListener('click', function (e) {
-    if (e.target === overlay) psClosePreUpsell();
-  });
+  if (overlay) {
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) psClosePreUpsell();
+    });
+  }
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') psClosePreUpsell();
   });
+
+  function bindCheckoutButton(id, plano, valor, defaultUrl) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var dest = (btn.href && btn.href.indexOf('http') === 0) ? btn.href : appendCurrentParams(defaultUrl);
+      window.trackInitiateCheckoutAndGo(plano, valor, dest);
+    });
+  }
+
+  bindCheckoutButton('ps-checkout-completo', 'completo', 32.90, 'https://pay.cakto.com.br/35nrsqb');
+  bindCheckoutButton('ps-checkout-completo-final', 'completo', 32.90, 'https://pay.cakto.com.br/35nrsqb');
+  bindCheckoutButton('ps-checkout-upsell', 'upgrade', 19.90, 'https://pay.cakto.com.br/9ukem3p_1247429');
 })();
 </script>
 
@@ -377,29 +444,5 @@ window.addEventListener("load", function () { window.scrollTo(0, 0); });
     var largura = slide ? slide.getBoundingClientRect().width : track.clientWidth;
     track.scrollBy({ left: direcao * (largura + 16), behavior: "smooth" });
   };
-</script>
-
-<script>
-(function () {
-  function trackInitiateCheckout(plano, valor) {
-    if (typeof window.fbq === "function") {
-      window.fbq("track", "InitiateCheckout", {
-        value: valor,
-        currency: "BRL",
-        content_name: plano === "completo" ? "Pacote Completo - Fofuras de Papel" : (plano === "upgrade" ? "Upgrade Pacote Completo" : "Plano Básico"),
-        content_type: "product"
-      });
-    }
-  }
-
-  var btnCompleto = document.getElementById('ps-checkout-completo');
-  if (btnCompleto) btnCompleto.addEventListener('click', function () { trackInitiateCheckout('completo', 32.90); });
-
-  var btnCompletoFinal = document.getElementById('ps-checkout-completo-final');
-  if (btnCompletoFinal) btnCompletoFinal.addEventListener('click', function () { trackInitiateCheckout('completo', 32.90); });
-
-  var btnUpsell = document.getElementById('ps-checkout-upsell');
-  if (btnUpsell) btnUpsell.addEventListener('click', function () { trackInitiateCheckout('upgrade', 19.90); });
-})();
 </script>
 </body></html>
