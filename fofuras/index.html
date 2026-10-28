@@ -36,6 +36,7 @@ window.addEventListener("load", function () { window.scrollTo(0, 0); });
     "https://connect.facebook.net/en_US/fbevents.js");
     fbq("init", "945788508139900");
     fbq("init", "1057566127319870");
+    fbq("init", "2174553423414011");
     fbq("track", "PageView");
   </script>
   <!-- UTMify / Tracking Script -->
@@ -393,13 +394,13 @@ window.addEventListener("load", function () { window.scrollTo(0, 0); });
   }
 
   var btnCompleto = document.getElementById('ps-checkout-completo');
-  if (btnCompleto) btnCompleto.addEventListener('click', function () { trackInitiateCheckout('completo', 27.90); });
+  if (btnCompleto) btnCompleto.addEventListener('click', function () { trackInitiateCheckout('completo', 32.90); });
 
   var btnCompletoFinal = document.getElementById('ps-checkout-completo-final');
-  if (btnCompletoFinal) btnCompletoFinal.addEventListener('click', function () { trackInitiateCheckout('completo', 27.90); });
+  if (btnCompletoFinal) btnCompletoFinal.addEventListener('click', function () { trackInitiateCheckout('completo', 32.90); });
 
   var btnUpsell = document.getElementById('ps-checkout-upsell');
-  if (btnUpsell) btnUpsell.addEventListener('click', function () { trackInitiateCheckout('upgrade', 17.90); });
+  if (btnUpsell) btnUpsell.addEventListener('click', function () { trackInitiateCheckout('upgrade', 19.90); });
 })();
 </script>
 </body></html>
