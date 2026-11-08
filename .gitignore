@@ -11,5 +11,7 @@ clone_steps/
 !public/images/*
 test_*.js
 test_*.mjs
-capture_*.mjs
 .vercel
+.env
+.env.*
+
