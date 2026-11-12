@@ -1,5 +1,18 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "priere.wisefull.online"
+        }
+      ],
+      "destination": "/la-priere-sacree",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/appbiblia",
