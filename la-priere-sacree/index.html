@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Prière Sacrée — Votre Guide Quotidien de Prière et Méditation</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <!-- Digistore24 Tracking & Promocode -->
+  <script src="https://www.digistore24-scripts.com/service/digistore.js"></script>
+  <script type="text/javascript">
+    digistorePromocode( { "product_id": 698069, "adjust_all_urls": true, "adjust_domain": true } );
+  </script>
+
+  <style>
+
+:root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5E6C0;
+    --navy: #0A0F1E;
+    --navy-mid: #111827;
+    --navy-card: #151D2E;
+    --cream: #FAF3E0;
+    --white: #FFFFFF;
+    --red-refund: #C0392B;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD ── */
+  .stars {
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(201,168,76,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(201,168,76,0.03) 0%, transparent 60%),
+      var(--navy);
+    pointer-events: none;
+  }
+  .stars::before, .stars::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 70%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 85%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 5%,  rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 50%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 90%, rgba(255,255,255,0.4) 0%, transparent 100%);
+    animation: twinkle 6s ease-in-out infinite alternate;
+  }
+  .stars::after {
+    background-image:
+      radial-gradient(1px 1px at 5%  50%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 20%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 35%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 80%, rgba(255,255,255,0.5) 0%, transparent 100%);
+    animation-duration: 9s; animation-direction: alternate-reverse;
+  }
+  @keyframes twinkle { from { opacity: .6; } to { opacity: 1; } }
+
+  /* ── LAYOUT ── */
+  .page { position: relative; z-index: 1; }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  .divider {
+    display: flex; align-items: center; gap: 16px;
+    margin: 0 auto 40px; max-width: 300px;
+    color: var(--gold);
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .divider-diamond { font-size: 10px; }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 80px 24px 60px;
+    background: linear-gradient(180deg, rgba(201,168,76,0.07) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    animation: fadeDown .9s ease both;
+  }
+  @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:none; } }
+
+  /* LOGO PLACEHOLDER */
+  .logo-placeholder {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    border: 2px dashed var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 32px;
+    background: rgba(201,168,76,0.05);
+    color: var(--gold); font-size: 13px;
+    font-family: 'Cinzel', serif; letter-spacing: 1px;
+    text-align: center; padding: 16px;
+    /* REPLACE THIS BLOCK WITH YOUR LOGO IMAGE */
+  }
+
+  .hero-pre {
+    font-family: 'Cinzel', serif;
+    font-size: 13px; letter-spacing: 4px;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    font-weight: 700;
+    color: var(--gold-light);
+    text-shadow: 0 0 40px rgba(201,168,76,0.4);
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--cream);
+    max-width: 640px; margin: 0 auto 40px;
+    font-style: italic;
+  }
+
+  .verse-box {
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    padding: 24px 32px;
+    max-width: 560px; margin: 0 auto 48px;
+    font-style: italic;
+    color: var(--cream);
+  }
+  .verse-box .verse-ref {
+    display: block; margin-top: 10px;
+    font-family: 'Cinzel', serif; font-size: 13px;
+    letter-spacing: 2px; color: var(--gold);
+    font-style: normal;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #C9A84C 0%, #E8C97A 50%, #C9A84C 100%);
+    color: var(--navy);
+    font-family: 'Cinzel', serif;
+    font-size: 1rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 18px 48px;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 4px 30px rgba(201,168,76,0.4);
+    transition: transform .2s, box-shadow .2s;
+    cursor: pointer; border: none;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(201,168,76,0.6); }
+
+  .price-tag {
+    margin-top: 16px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem; color: var(--gold-light);
+    font-weight: 700;
+  }
+  .price-tag span {
+    font-size: .9rem; color: rgba(255,255,255,0.5);
+    font-family: 'EB Garamond', serif; font-weight: 400;
+    display: block; margin-top: 4px;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 72px 0; }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 12px; letter-spacing: 4px;
+    color: var(--gold); text-transform: uppercase;
+    text-align: center; margin-bottom: 12px;
+  }
+
+  h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 16px; line-height: 1.3;
+  }
+
+  .lead {
+    text-align: center; max-width: 640px;
+    margin: 0 auto 48px;
+    color: rgba(250,243,224,0.85);
+    font-size: 1.1rem;
+  }
+
+  /* ── WHAT IS ── */
+  .what-is-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px; margin-top: 48px;
+  }
+  .what-card {
+    background: var(--navy-card);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px; padding: 32px 24px;
+    text-align: center;
+    transition: border-color .3s, transform .3s;
+  }
+  .what-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .what-card .icon { font-size: 2rem; margin-bottom: 16px; }
+  .what-card h3 {
+    font-family: 'Cinzel', serif; font-size: 1rem;
+    color: var(--gold-light); margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .what-card p { font-size: .95rem; color: rgba(250,243,224,0.8); }
+
+  /* ── INSIDE APP ── */
+  .app-section { background: rgba(201,168,76,0.03); border-top: 1px solid rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.1); }
+
+  .course-list { list-style: none; max-width: 640px; margin: 0 auto; }
+  .course-item {
+    display: flex; align-items: flex-start; gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .course-item:last-child { border-bottom: none; }
+  .course-icon {
+    width: 48px; height: 48px; flex-shrink: 0;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .course-info h3 {
+    font-family: 'Cinzel', serif; font-size: .95rem;
+    color: var(--gold-light); margin-bottom: 4px; letter-spacing: 1px;
+  }
+  .course-info p { font-size: .9rem; color: rgba(250,243,224,0.7); }
+
+  /* ── FEATURES ── */
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .feature-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: var(--navy-card);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 10px; padding: 20px;
+  }
+  .feature-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+  .feature-info h4 {
+    font-family: 'Cinzel', serif; font-size: .9rem;
+    color: var(--gold); margin-bottom: 4px; letter-spacing: 1px;
+  }
+  .feature-info p { font-size: .9rem; color: rgba(250,243,224,0.75); }
+
+  /* ── DELIVERY ── */
+  .delivery-box {
+    max-width: 600px; margin: 0 auto;
+    background: var(--navy-card);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 16px; padding: 40px;
+    text-align: center;
+  }
+  .delivery-box .delivery-icon { font-size: 3rem; margin-bottom: 20px; }
+  .delivery-box h3 {
+    font-family: 'Cinzel', serif; font-size: 1.1rem;
+    color: var(--gold-light); margin-bottom: 16px; letter-spacing: 1px;
+  }
+  .delivery-steps { list-style: none; text-align: left; margin-top: 24px; }
+  .delivery-steps li {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 10px 0; border-bottom: 1px solid rgba(201,168,76,0.1);
+    font-size: .95rem; color: rgba(250,243,224,0.85);
+  }
+  .delivery-steps li:last-child { border-bottom: none; }
+  .step-num {
+    width: 28px; height: 28px; flex-shrink: 0;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: .75rem; color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ── REFUND ── */
+  .refund-section {
+    background: rgba(201,168,76,0.04);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+  .refund-box {
+    max-width: 600px; margin: 0 auto;
+    background: var(--navy-card);
+    border: 2px solid var(--gold);
+    border-radius: 16px; padding: 40px;
+    text-align: center;
+  }
+  .refund-badge {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #C9A84C, #E8C97A);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    box-shadow: 0 0 30px rgba(201,168,76,0.4);
+  }
+  .refund-badge .days {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--navy);
+    line-height: 1;
+  }
+  .refund-badge .days-label {
+    font-family: 'Cinzel', serif; font-size: .6rem;
+    letter-spacing: 2px; color: var(--navy); text-transform: uppercase;
+  }
+  .refund-box h3 {
+    font-family: 'Cinzel', serif; font-size: 1.2rem;
+    color: var(--gold-light); margin-bottom: 16px; letter-spacing: 1px;
+  }
+  .refund-box p { color: rgba(250,243,224,0.85); font-size: .95rem; }
+
+  /* ── PRICING CTA ── */
+  .pricing-section { text-align: center; }
+  .pricing-box {
+    max-width: 480px; margin: 0 auto;
+    background: var(--navy-card);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 16px; padding: 48px 40px;
+  }
+  .price-display {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 3.5rem; color: var(--gold-light);
+    font-weight: 700; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-type {
+    font-family: 'Cinzel', serif; font-size: .85rem;
+    letter-spacing: 3px; color: rgba(255,255,255,0.5);
+    text-transform: uppercase; margin-bottom: 32px;
+  }
+  .pricing-perks { list-style: none; margin-bottom: 36px; text-align: left; }
+  .pricing-perks li {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0; font-size: .95rem;
+    color: rgba(250,243,224,0.85);
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+  .pricing-perks li:last-child { border-bottom: none; }
+  .check { color: var(--gold); font-size: 1rem; }
+
+  .secure-note {
+    margin-top: 16px; font-size: .82rem;
+    color: rgba(255,255,255,0.4);
+    font-family: 'Cinzel', serif; letter-spacing: 1px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 48px 24px 32px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem; color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .footer-links {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 24px;
+    margin-bottom: 24px;
+  }
+  .footer-links a {
+    color: rgba(250,243,224,0.5);
+    font-size: .85rem; text-decoration: none;
+    font-family: 'Cinzel', serif; letter-spacing: 1px;
+    transition: color .2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    color: rgba(255,255,255,0.25);
+    font-size: .8rem; font-family: 'Cinzel', serif; letter-spacing: 1px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    body { font-size: 16px; }
+
+    .container { padding: 0 16px; }
+
+    section { padding: 48px 0; }
+
+    /* HERO */
+    .hero { padding: 48px 16px 36px; }
+
+    /* CARDS */
+    .what-is-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .what-card { padding: 24px 20px; }
+
+    /* COURSES */
+    .course-item { gap: 14px; padding: 18px 0; }
+    .course-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+
+    /* FEATURES */
+    .features-grid { grid-template-columns: 1fr; gap: 14px; }
+    .feature-item { padding: 16px; }
+
+    /* DELIVERY */
+    .delivery-box { padding: 24px 16px; }
+    .delivery-steps li { font-size: .9rem; gap: 10px; }
+
+    /* REFUND */
+    .refund-box { padding: 24px 16px; }
+    .refund-badge { width: 85px; height: 85px; }
+    .refund-badge .days { font-size: 1.3rem; }
+
+    /* PRICING */
+    .pricing-box { padding: 28px 16px; }
+    .price-display { font-size: 2.8rem; }
+    .pricing-perks li { font-size: .88rem; }
+    .cta-btn { padding: 16px 28px; font-size: .9rem; letter-spacing: 1px; }
+
+    /* FOOTER */
+    .footer-links { gap: 14px; }
+    .footer-links a { font-size: .78rem; }
+
+
+  @media (max-width: 400px) {
+    h2 { font-size: 1.2rem; }
+    .hero h1 { font-size: 1.8rem; }
+    .price-display { font-size: 2.4rem; }
+    .footer-links { flex-direction: column; gap: 10px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+html body { background: var(--navy); color: var(--cream); font-family: 'EB Garamond', Georgia, serif; }
+}
+*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#ie5p1{width:200px;height:200px;object-fit:cover;border-radius:50%;margin:0 auto 32px;display:block;}#i2lnyb{background:rgba(201,168,76,0.03);border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1);}#izzsa5{margin-top:16px;font-size:.85rem;color:rgba(255,255,255,0.45);font-family:'Cinzel',serif;letter-spacing:1px;}#i0qqst{width:100%;text-align:center;display:block;}#iqqbbz{max-width:640px;margin:0 auto 24px;font-size:.85rem;color:rgba(255,255,255,0.4);line-height:1.6;
+
+/* MODAL STYLES */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 15, 30, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.active {
+  display: flex;
+}
+.modal-content {
+  background: #151D2E;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 12px;
+  max-width: 720px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 36px 30px;
+  color: #FAF3E0;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: #C9A84C;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-content h3 {
+  font-family: 'Cinzel', serif;
+  color: #E8C97A;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  padding-bottom: 10px;
+}
+.modal-content h4 {
+  font-family: 'Cinzel', serif;
+  color: #C9A84C;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+.modal-content p, .modal-content li {
+  font-size: 0.95rem;
+  color: rgba(250, 243, 224, 0.85);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.modal-content ul {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+.reseller-notice {
+  margin-top: 24px;
+  padding: 16px;
+  background: rgba(201, 168, 76, 0.05);
+  border: 1px dashed rgba(201, 168, 76, 0.25);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="stars"></div>
+<div class="page">
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="container">
+      <!-- LOGO -->
+      <img src="./assets/logo.png" alt="La Prière Sacrée Logo" id="ie5p1" />
+      <p class="hero-pre">Découvrez</p>
+      <h1>La Prière Sacrée</h1>
+      <p class="hero-subtitle">
+        Un compagnon spirituel quotidien conçu pour soutenir votre vie de prière — à travers la prière, les Écritures et la sagesse — chaque jour.
+      </p>
+      <div class="verse-box">
+        « Ne soyez inquiets de rien ; mais en toute chose faites connaître vos besoins à Dieu par des prières et des supplications, avec des actions de grâces. »
+        <span class="verse-ref">— Philippiens 4:6</span>
+      </div>
+      <a href="https://www.checkout-ds24.com/product/698069" class="cta-btn">
+        Commencer Mon Parcours — 37 €
+      </a>
+      <div class="price-tag">
+        Paiement Unique · 37 €
+        <span>Accès Numérique Instantané via l'Application</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       WHAT IS IT
+  ══════════════════════════════════════════ -->
+  <section class="fade-in">
+    <div class="container">
+      <p class="section-label">Qu'est-ce que La Prière Sacrée ?</p>
+      <h2>Votre Portail Quotidien vers la Présence de Dieu</h2>
+      <p class="lead">
+        La Prière Sacrée est une application numérique qui offre une expérience spirituelle complète — prières, enseignements bibliques, réflexions quotidiennes et sagesse fondée sur les Écritures — en un seul endroit, accessible depuis n'importe quel appareil.
+      </p>
+      <div class="what-is-grid">
+        <div class="what-card">
+          <div class="icon">🙏</div>
+          <h3>Prière Quotidienne</h3>
+          <p>Une nouvelle prière ancrée dans les Écritures chaque jour pour soutenir votre routine matinale avec concentration et réflexion.</p>
+        </div>
+        <div class="what-card">
+          <div class="icon">📖</div>
+          <h3>Sagesse Biblique</h3>
+          <p>Des cours et des enseignements fondés sur la Parole de Dieu pour approfondir votre compréhension et votre foi.</p>
+        </div>
+        <div class="what-card">
+          <div class="icon">✨</div>
+          <h3>Croissance Spirituelle</h3>
+          <p>Des programmes structurés conçus pour soutenir votre développement personnel et spirituel.</p>
+        </div>
+        <div class="what-card">
+          <div class="icon">🎁</div>
+          <h3>Bonus Exclusifs</h3>
+          <p>Des affirmations quotidiennes, des rituels matinaux et des réflexions du soir pour soutenir votre pratique spirituelle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       INSIDE THE APP
+  ══════════════════════════════════════════ -->
+  <section class="app-section fade-in">
+    <div class="container">
+      <p class="section-label">À l'Intérieur de l'Application</p>
+      <h2>Tout Ce Qui Est Inclus dans Votre Accès</h2>
+      <p class="lead">
+        En rejoignant La Prière Sacrée, vous bénéficiez d'un accès complet à une riche bibliothèque de contenus spirituels — organisée, mise à jour et conçue pour une utilisation quotidienne.
+      </p>
+      <ul class="course-list">
+        <li class="course-item">
+          <div class="course-icon">📜</div>
+          <div class="course-info">
+            <h3>Le Manuscrit de Salomon</h3>
+            <p>Le cours principal — sagesse et développement spirituel fondés sur la Parole de Dieu, puisant dans les enseignements intemporels de Salomon.</p>
+          </div>
+        </li>
+        <li class="course-item">
+          <div class="course-icon">✦</div>
+          <div class="course-info">
+            <h3>Le Codex Royal — Le Cercle de la Clarté</h3>
+            <p>Un programme axé sur la clarté spirituelle, vous aidant à aligner votre esprit et votre cœur avec la volonté de Dieu pour votre vie.</p>
+          </div>
+        </li>
+        <li class="course-item">
+          <div class="course-icon">🎵</div>
+          <div class="course-info">
+            <h3>Les Fréquences de l'Ascension — Le Chemin de la Discipline</h3>
+            <p>Enseignements audio guidés sur la discipline de la foi et le chemin de l'ascension spirituelle à travers la Parole de Dieu.</p>
+          </div>
+        </li>
+        <li class="course-item">
+          <div class="course-icon">📋</div>
+          <div class="course-info">
+            <h3>Le Codex de Poche</h3>
+            <p>Une collection portable de prières pour la force, la clarté et le développement spirituel — disponible où que vous soyez.</p>
+          </div>
+        </li>
+        <li class="course-item">
+          <div class="course-icon">🙏</div>
+          <div class="course-info">
+            <h3>Prières Quotidiennes — Mises à Jour Chaque Jour</h3>
+            <p>Une nouvelle prière chaque matin, accompagnée d'une référence scripturaire et d'une réflexion quotidienne pour ancrer votre journée dans la présence de Dieu.</p>
+          </div>
+        </li>
+        <li class="course-item">
+          <div class="course-icon">🎁</div>
+          <div class="course-info">
+            <h3>Contenu Bonus Exclusif</h3>
+            <p>Affirmations quotidiennes, Rituel de Concentration Matinale, pratique de Réflexion du Soir et contenu supplémentaire pour soutenir votre parcours spirituel.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FEATURES
+  ══════════════════════════════════════════ -->
+  <section class="fade-in">
+    <div class="container">
+      <p class="section-label">Pourquoi La Prière Sacrée ?</p>
+      <h2>Une Expérience Spirituelle Complète</h2>
+      <p class="lead">Tout ce dont vous avez besoin pour maintenir une pratique de prière régulière et significative — dans une application magnifiquement conçue.</p>
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">📅</div>
+          <div class="feature-info">
+            <h4>Contenu Mis à Jour Chaque Jour</h4>
+            <p>De nouvelles prières et réflexions chaque jour pour maintenir votre pratique spirituelle vivante et renouvelée.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📱</div>
+          <div class="feature-info">
+            <h4>Accès depuis N'importe Quel Appareil</h4>
+            <p>Connectez-vous depuis votre téléphone, tablette ou ordinateur — votre compagnon spirituel est toujours avec vous.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📖</div>
+          <div class="feature-info">
+            <h4>Fondé sur les Écritures</h4>
+            <p>Chaque prière, enseignement et réflexion est enraciné dans la Parole de Dieu.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🌅</div>
+          <div class="feature-info">
+            <h4>Pratiques Matinales et du Soir</h4>
+            <p>Des rituels guidés pour le début et la fin de votre journée pour vous maintenir centré dans la foi.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✦</div>
+          <div class="feature-info">
+            <h4>Thèmes Mensuels</h4>
+            <p>Chaque mois apporte un nouveau thème spirituel — de la confiance et la stabilité à la clarté et l'objectif.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-info">
+            <h4>Programmes Structurés</h4>
+            <p>Des cours étape par étape conçus pour soutenir une pratique spirituelle régulière et une réflexion personnelle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       HOW YOU RECEIVE IT
+  ══════════════════════════════════════════ -->
+  <section class="fade-in" id="i2lnyb">
+    <div class="container">
+      <p class="section-label">Comment Ça Fonctionne</p>
+      <h2>Votre Accès Est Instantané et Numérique</h2>
+      <p class="lead">
+        La Prière Sacrée est livrée <strong>100% numériquement</strong> via une application en ligne sécurisée — aucun produit physique, aucun téléchargement, aucune attente.
+      </p>
+      <div class="delivery-box">
+        <div class="delivery-icon">📲</div>
+        <h3>Comment Vous Recevez Votre Accès</h3>
+        <p>Une fois votre achat confirmé, vous recevrez vos identifiants de connexion par e-mail. Utilisez-les simplement pour vous connecter à l'application La Prière Sacrée depuis n'importe quel navigateur ou appareil et commencer immédiatement.</p>
+        <ul class="delivery-steps">
+          <li><div class="step-num">1</div> Finalisez votre paiement sécurisé</li>
+          <li><div class="step-num">2</div> Recevez vos identifiants d'accès par e-mail instantanément</li>
+          <li><div class="step-num">3</div> Connectez-vous à l'application depuis n'importe quel appareil</li>
+          <li><div class="step-num">4</div> Commencez votre première Prière Quotidienne aujourd'hui</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       REFUND POLICY
+  ══════════════════════════════════════════ -->
+  <section class="refund-section fade-in">
+    <div class="container">
+      <p class="section-label">Notre Engagement envers Vous</p>
+      <h2>Garantie de Remboursement de 60 Jours</h2>
+      <div class="refund-box">
+        <div class="refund-badge">
+          <span class="days">60</span>
+          <span class="days-label">Jours Garantis</span>
+        </div>
+        <h3>Essayez Sans Aucun Risque</h3>
+        <p>
+          Nous soutenons La Prière Sacrée avec une <strong>garantie complète de remboursement de 60 jours</strong>. Si pour quelque raison que ce soit vous n'êtes pas entièrement satisfait dans les 60 jours suivant votre achat, contactez simplement notre équipe d'assistance et vous recevrez un remboursement complet — sans questions. Votre investissement est entièrement protégé.
+        </p>
+        <p id="izzsa5">
+          Conformément à la législation européenne, vous bénéficiez également d'un délai légal de rétractation de 14 jours, étendu à 60 jours par notre garantie satisfaction.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PRICING / FINAL CTA
+  ══════════════════════════════════════════ -->
+  <section class="pricing-section fade-in">
+    <div class="container">
+      <p class="section-label">Commencez Aujourd'hui</p>
+      <h2>Un Prix. Accès Complet.</h2>
+      <p class="lead">Tout inclus. Aucun abonnement. Aucun frais caché. Un seul paiement pour un accès numérique complet.</p>
+      <div class="pricing-box">
+        <div class="price-display">37 €</div>
+        <div class="price-type">Paiement Unique</div>
+        <ul class="pricing-perks">
+          <li><span class="check">✦</span> Le Manuscrit de Salomon (Cours Principal)</li>
+          <li><span class="check">✦</span> Le Codex Royal — Le Cercle de la Clarté</li>
+          <li><span class="check">✦</span> Les Fréquences de l'Ascension — Le Chemin de la Discipline</li>
+          <li><span class="check">✦</span> Le Codex de Poche — Prières pour la Force et la Clarté</li>
+          <li><span class="check">✦</span> Prières Quotidiennes — Mises à Jour Chaque Jour</li>
+          <li><span class="check">✦</span> Affirmations Quotidiennes et Pratiques Bonus</li>
+          <li><span class="check">✦</span> Rituels Spirituels Matinaux et du Soir</li>
+          <li><span class="check">✦</span> Accès Numérique Instantané via l'Application</li>
+          <li><span class="check">✦</span> Garantie de Remboursement de 60 Jours</li>
+        </ul>
+        <a href="https://www.checkout-ds24.com/product/698069" id="i0qqst" class="cta-btn">
+          Oui — Je Veux Accéder Maintenant
+        </a>
+        <p class="secure-note">🔒 Paiement Sécurisé · Livraison Numérique Instantanée</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-logo">La Prière Sacrée</div>
+    <div class="footer-links">
+      <a href="#mentions-legales" onclick="openModal('modal-mentions'); return false;">Mentions Légales</a>
+      <a href="#politique-confidentialite" onclick="openModal('modal-privacy'); return false;">Politique de Confidentialité</a>
+      <a href="#cgv" onclick="openModal('modal-cgv'); return false;">Conditions Générales de Vente (CGV)</a>
+      <a href="#remboursement" onclick="openModal('modal-refund'); return false;">Politique de Remboursement</a>
+      <a href="mailto:contact@wisefull.online">Assistance & Contact</a>
+    </div>
+
+    <div class="reseller-notice">
+      <strong>Avis de distribution Digistore24 :</strong> Digistore24 GmbH (St.-Godehard-Straße 32, 31139 Hildesheim, Allemagne) est le revendeur agréé et commerçant officiel des produits et services proposés sur ce site web. Digistore24 gère en toute sécurité l'ensemble des paiements, la facturation et le service client relatif aux transactions.
+    </div>
+
+    <p id="iqqbbz" style="margin-top:20px;">
+      La Prière Sacrée est un produit numérique livré via un accès à une application en ligne. Tout le contenu est destiné au développement spirituel personnel et à des fins d'inspiration uniquement. Les expériences individuelles peuvent varier et aucun résultat spécifique n'est garanti. Ce produit n'est pas affilié à, approuvé par, ou représentant une église, institution religieuse ou confession. Ce produit n'est pas destiné à remplacer un conseil professionnel, médical, psychologique ou religieux.
+    </p>
+    <p class="footer-copy">© 2026 La Prière Sacrée. Tous droits réservés.</p>
+  </footer>
+
+</div><!-- /page -->
+
+<!-- ══════════════════════════════════════════
+     LEGAL MODALS
+══════════════════════════════════════════ -->
+
+<!-- Mentions Légales -->
+<div id="modal-mentions" class="modal-overlay" onclick="closeModal(event, 'modal-mentions')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModalDirect('modal-mentions')">&times;</button>
+    <h3>Mentions Légales</h3>
+    <h4>1. Éditeur du Site</h4>
+    <p>Le site <strong>La Prière Sacrée</strong> est édité dans le cadre de la commercialisation d'œuvres numériques et applications de développement spirituel personnel.</p>
+    <p>Contact Support : <a href="mailto:contact@wisefull.online" style="color:#C9A84C;">contact@wisefull.online</a></p>
+    <h4>2. Hébergement</h4>
+    <p>Le site est hébergé par la société <strong>Vercel Inc.</strong>, située au 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. Plateforme sécurisée avec chiffrement SSL/TLS.</p>
+    <h4>3. Revendeur Officiel & Facturation</h4>
+    <p>La commande, la facturation et la gestion des transactions sont opérées par <strong>Digistore24 GmbH</strong> (St.-Godehard-Straße 32, 31139 Hildesheim, Allemagne), revendeur agréé pour l'Union Européenne.</p>
+    <h4>4. Propriété Intellectuelle</h4>
+    <p>Tous les textes, graphismes, interfaces, manuscrits et logos présents sur ce site sont protégés par le droit d'auteur et demeurent la propriété exclusive de leurs auteurs respectifs.</p>
+  </div>
+</div>
+
+<!-- Politique de Confidentialité -->
+<div id="modal-privacy" class="modal-overlay" onclick="closeModal(event, 'modal-privacy')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModalDirect('modal-privacy')">&times;</button>
+    <h3>Politique de Confidentialité (RGPD)</h3>
+    <h4>1. Collecte des Données Personnelles</h4>
+    <p>Nous respectons votre vie privée conformément au Règlement Général sur la Protection des Données (RGPD). Les données collectées lors de votre commande (nom, adresse e-mail) sont strictement nécessaires à l'acheminement de vos identifiants d'accès à l'application.</p>
+    <h4>2. Traitement des Paiements</h4>
+    <p>Les transactions financières sont traitées directement par notre partenaire agréé Digistore24 via un protocole chiffré de niveau bancaire (SSL 256 bits). Aucune donnée de carte bancaire ne transite ni n'est conservée sur nos serveurs.</p>
+    <h4>3. Vos Droits</h4>
+    <p>Conformément à la réglementation européenne, vous disposez d'un droit d'accès, de rectification, de portabilité et d'effacement de vos données personnelles. Vous pouvez exercer ce droit à tout moment en écrivant à : <a href="mailto:contact@wisefull.online" style="color:#C9A84C;">contact@wisefull.online</a>.</p>
+    <h4>4. Cookies & Traçabilité</h4>
+    <p>Ce site utilise uniquement des cookies strictement nécessaires à la navigation et au bon fonctionnement de l'attribution des commandes via Digistore24.</p>
+  </div>
+</div>
+
+<!-- Conditions Générales de Vente -->
+<div id="modal-cgv" class="modal-overlay" onclick="closeModal(event, 'modal-cgv')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModalDirect('modal-cgv')">&times;</button>
+    <h3>Conditions Générales de Vente (CGV)</h3>
+    <h4>1. Objet</h4>
+    <p>Les présentes CGV régissent la vente d'accès numérique à l'application et aux contenus de formation spirituelle « La Prière Sacrée ».</p>
+    <h4>2. Prix et Modalités de Paiement</h4>
+    <p>Le prix est indiqué en Euros (37 € TTC) pour un paiement unique sans abonnement récurrent. Le paiement est exigible immédiatement lors de la commande.</p>
+    <h4>3. Livraison Numérique</h4>
+    <p>Le produit est 100% numérique. La livraison s'effectue immédiatement et sans frais d'expédition, par l'envoi d'un e-mail contenant les identifiants et le lien de connexion à l'application web dès confirmation du règlement.</p>
+    <h4>4. Droit de Rétractation et Garantie</h4>
+    <p>Conformément aux directives européennes relatives au commerce électronique, vous bénéficiez d'un droit légal de rétractation de 14 jours. De plus, nous offrons une garantie commerciale de satisfaction étendue à 60 jours.</p>
+  </div>
+</div>
+
+<!-- Politique de Remboursement -->
+<div id="modal-refund" class="modal-overlay" onclick="closeModal(event, 'modal-refund')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModalDirect('modal-refund')">&times;</button>
+    <h3>Politique de Remboursement</h3>
+    <h4>1. Garantie Sérénité de 60 Jours</h4>
+    <p>Nous souhaitons que votre expérience avec La Prière Sacrée soit pleinement enrichissante. C'est pourquoi nous vous offrons une garantie inconditionnelle de remboursement pendant <strong>60 jours entiers</strong> suivant la date de votre achat.</p>
+    <h4>2. Droit Légal Européen</h4>
+    <p>Cette garantie commerciale inclut et dépasse le délai légal de rétractation de 14 jours prévu par l'article L. 221-18 du Code de la consommation européen.</p>
+    <h4>3. Comment Obtenir un Remboursement</h4>
+    <p>Pour demander votre remboursement, il vous suffit de nous contacter à <a href="mailto:contact@wisefull.online" style="color:#C9A84C;">contact@wisefull.online</a> ou directement via le portail de support de commande Digistore24 avec votre numéro de commande. Le remboursement sera crédité sous 2 à 5 jours ouvrés sur le moyen de paiement utilisé lors de l'achat.</p>
+  </div>
+</div>
+
+<script>
+  // Fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Modal handlers
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function closeModalDirect(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+  function closeModal(e, id) {
+    if (e.target.id === id) {
+      closeModalDirect(id);
+    }
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(m => {
+        m.classList.remove('active');
+      });
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+
+</body>
+</html>

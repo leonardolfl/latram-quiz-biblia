@@ -9,6 +9,7 @@ clone_steps/
 *.jpg
 *.jpeg
 !public/images/*
+!la-priere-sacree/assets/*
 test_*.js
 test_*.mjs
 .vercel

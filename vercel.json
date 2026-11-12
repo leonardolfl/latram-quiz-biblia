@@ -16,6 +16,32 @@
     {
       "source": "/fofuras/",
       "destination": "/fofuras/index.html"
+    },
+    {
+      "source": "/la-priere-sacree",
+      "destination": "/la-priere-sacree/index.html"
+    },
+    {
+      "source": "/la-priere-sacree/",
+      "destination": "/la-priere-sacree/index.html"
+    },
+    {
+      "source": "/priere",
+      "destination": "/la-priere-sacree/index.html"
+    },
+    {
+      "source": "/priere/",
+      "destination": "/la-priere-sacree/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "priere.wisefull.online"
+        }
+      ],
+      "destination": "/la-priere-sacree/index.html"
     }
   ]
 }
