@@ -27,11 +27,11 @@
     },
     {
       "source": "/priere",
-      "destination": "/la-priere-sacree/index.html"
+      "destination": "/la-priere-sacree"
     },
     {
       "source": "/priere/",
-      "destination": "/la-priere-sacree/index.html"
+      "destination": "/la-priere-sacree"
     },
     {
       "source": "/(.*)",
@@ -41,7 +41,7 @@
           "value": "priere.wisefull.online"
         }
       ],
-      "destination": "/la-priere-sacree/index.html"
+      "destination": "/la-priere-sacree"
     }
   ]
 }
