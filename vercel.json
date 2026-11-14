@@ -11,6 +11,17 @@
       ],
       "destination": "/la-priere-sacree",
       "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "cigana.wisefull.online"
+        }
+      ],
+      "destination": "/ciganavisual",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -56,11 +67,11 @@
     },
     {
       "source": "/cigana",
-      "destination": "/ciganavisual/index.html"
+      "destination": "/ciganavisual"
     },
     {
       "source": "/cigana/",
-      "destination": "/ciganavisual/index.html"
+      "destination": "/ciganavisual"
     },
     {
       "source": "/(.*)",
@@ -71,6 +82,16 @@
         }
       ],
       "destination": "/la-priere-sacree"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "cigana.wisefull.online"
+        }
+      ],
+      "destination": "/ciganavisual"
     }
   ]
 }
