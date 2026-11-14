@@ -19,6 +19,9 @@ export default defineConfig({
           if (req.url === '/la-priere-sacree' || req.url === '/la-priere-sacree/' || req.url === '/priere' || req.url === '/priere/') {
             req.url = '/la-priere-sacree/index.html';
           }
+          if (req.url === '/ciganavisual' || req.url === '/ciganavisual/' || req.url === '/cigana' || req.url === '/cigana/') {
+            req.url = '/ciganavisual/index.html';
+          }
           next();
         });
       },
@@ -31,6 +34,7 @@ export default defineConfig({
         appbiblia: resolve(__dirname, 'appbiblia/index.html'),
         fofuras: resolve(__dirname, 'fofuras/index.html'),
         priere: resolve(__dirname, 'la-priere-sacree/index.html'),
+        ciganavisual: resolve(__dirname, 'ciganavisual/index.html'),
       },
     },
   },

@@ -47,6 +47,22 @@
       "destination": "/la-priere-sacree"
     },
     {
+      "source": "/ciganavisual",
+      "destination": "/ciganavisual/index.html"
+    },
+    {
+      "source": "/ciganavisual/",
+      "destination": "/ciganavisual/index.html"
+    },
+    {
+      "source": "/cigana",
+      "destination": "/ciganavisual/index.html"
+    },
+    {
+      "source": "/cigana/",
+      "destination": "/ciganavisual/index.html"
+    },
+    {
       "source": "/(.*)",
       "has": [
         {
