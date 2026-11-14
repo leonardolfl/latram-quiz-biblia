@@ -9,7 +9,7 @@ testimonials = [
         "avatar_text": "CM",
         "status": "en línea",
         "messages": [
-            {"type": "received", "text": "¡Hola! Ya me llegó el material <b>36 Cartas del Baralho Gitano en Mapas Mentales</b> y de verdad que es simplemente increíble! 😍", "time": "10:28"},
+            {"type": "received", "text": "¡Hola! Ya me llegó el material <b>36 Cartas de la Baraja Gitana en Mapas Mentales</b> y de verdad que es simplemente increíble! 😍", "time": "10:28"},
             {"type": "received", "text": "Súper lindo, ultra práctico y muy claro todo. ✨", "time": "10:28"},
             {"type": "received", "text": "¡Me está ayudando muchísimo a interpretar las cartas con total seguridad!", "time": "10:29"},
             {"type": "sent", "text": "¡Qué alegría tan linda Carla! Me alegra enormemente que te esté gustando y sirviendo tanto. ✨🌹 ¡Cualquier duda estoy a tu disposición!", "time": "10:31"}
@@ -49,7 +49,7 @@ testimonials = [
         "avatar_text": "VG",
         "status": "en línea",
         "messages": [
-            {"type": "received", "text": "Chicas, ¡qué hermosa la página de <b>El Zorro</b>! 🦊 Las explicaciones están clarísimas!", "time": "20:44"},
+            {"type": "received", "text": "Chicas, ¡qué hermosa la página de <b>La Raposa</b>! 🦊 Las explicaciones están clarísimas!", "time": "20:44"},
             {"type": "received", "text": "El diseño visual es maravilloso, quedó perfecto para estudiar.", "time": "20:45"},
             {"type": "received", "text": "Hice lecturas hoy y entendí todo mucho más fácil y rápido. ¡Felicitaciones por el trabajo!", "time": "20:46"},
             {"type": "sent", "text": "¡Me alegra muchísimo saberlo Valeria! Muchísimas gracias por el cariño y la confianza! 🦊✨", "time": "20:47"}

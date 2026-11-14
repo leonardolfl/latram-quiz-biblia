@@ -16,4 +16,7 @@ test_*.mjs
 .vercel
 .env
 .env.*
+__pycache__/
+*.pyc
+capture_*.mjs
 
