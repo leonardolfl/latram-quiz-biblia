@@ -102,33 +102,7 @@
           <span class="rounded-full bg-danger/10 px-2.5 py-1 text-[11px] font-bold text-danger">-73% DESCUENTO</span>
         </div>
 
-        <!-- Automatic Local Currency Notice & Selector -->
-        <div class="mt-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-gold/30 bg-gold/5 px-3 py-2 text-xs">
-          <div class="flex items-center gap-1.5 font-medium text-gold-foreground">
-            <span id="country-flag" class="text-base">🌎</span>
-            <span id="country-notice">Moneda convertida a tu país</span>
-          </div>
-          <div class="relative">
-            <select id="currency-select" onchange="onCurrencyChange(this.value)" class="cursor-pointer rounded-lg border border-gold/40 bg-card px-2 py-1 text-[11px] font-semibold text-foreground shadow-sm focus:outline-none focus:ring-1 focus:ring-gold" aria-label="Seleccionar moneda">
-              <option value="USD">🇺🇸 USD (US$ 9.90)</option>
-              <option value="BRL">🇧🇷 BRL (R$ 57,90)</option>
-              <option value="MXN">🇲🇽 MXN ()</option>
-              <option value="COP">🇨🇴 COP (.900)</option>
-              <option value="EUR">🇪🇸 EUR (€ 9,90)</option>
-              <option value="PEN">🇵🇪 PEN (S/ 36,90)</option>
-              <option value="CLP">🇨🇱 CLP (.900)</option>
-              <option value="ARS">🇦🇷 ARS (.900)</option>
-              <option value="UYU">🇺🇾 UYU ()</option>
-              <option value="CRC">🇨🇷 CRC (₡5.100)</option>
-              <option value="GTQ">🇬🇹 GTQ (Q 77)</option>
-              <option value="PYG">🇵🇾 PYG (₲75.000)</option>
-              <option value="DOP">🇩🇴 DOP (RD$ 590)</option>
-              <option value="BOB">🇧🇴 BOB (Bs 69)</option>
-            </select>
-          </div>
-        </div>
-
-        <p class="mt-4 text-sm text-muted-foreground line-through" id="price-old">De US$ 37.00</p>
+<p class="mt-4 text-sm text-muted-foreground line-through" id="price-old">De US$ 37.00</p>
         
         <div class="flex items-baseline gap-2">
           <span class="text-xl font-bold text-muted-foreground" id="currency-symbol">US$</span>
@@ -396,17 +370,11 @@
     const priceMainEl = document.getElementById('price-main');
     const priceOldEl = document.getElementById('price-old');
     const suffixEl = document.getElementById('currency-suffix');
-    const flagEl = document.getElementById('country-flag');
-    const noticeEl = document.getElementById('country-notice');
-    const selectEl = document.getElementById('currency-select');
 
     if (symbolEl) symbolEl.textContent = c.symbol;
     if (priceMainEl) priceMainEl.textContent = c.format(c.base);
     if (suffixEl) suffixEl.textContent = c.suffix || '';
     if (priceOldEl) priceOldEl.textContent = 'De ' + c.symbol + ' ' + c.format(c.old) + (c.suffix || '');
-    if (flagEl) flagEl.textContent = c.flag;
-    if (noticeEl) noticeEl.textContent = 'Adaptado a ' + c.country;
-    if (selectEl && selectEl.value !== c.code) selectEl.value = c.code;
 
     document.querySelectorAll('.bonus-old-price').forEach(el => {
       el.textContent = 'De ' + c.symbol + ' ' + c.format(c.bonus) + (c.suffix || '');
