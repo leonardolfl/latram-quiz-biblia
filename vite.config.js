@@ -22,6 +22,12 @@ export default defineConfig({
           if (req.url === '/ciganavisual' || req.url === '/ciganavisual/' || req.url === '/cigana' || req.url === '/cigana/') {
             req.url = '/ciganavisual/index.html';
           }
+          if (req.url === '/white' || req.url === '/white/' || req.url === '/ciganavisual/white') {
+            req.url = '/ciganavisual/white.html';
+          }
+          if (req.url === '/catalogo' || req.url === '/catalogo/') {
+            req.url = '/catalogo/index.html';
+          }
           next();
         });
       },
@@ -35,6 +41,8 @@ export default defineConfig({
         fofuras: resolve(__dirname, 'fofuras/index.html'),
         priere: resolve(__dirname, 'la-priere-sacree/index.html'),
         ciganavisual: resolve(__dirname, 'ciganavisual/index.html'),
+        white: resolve(__dirname, 'ciganavisual/white.html'),
+        catalogo: resolve(__dirname, 'catalogo/index.html'),
       },
     },
   },

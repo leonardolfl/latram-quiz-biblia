@@ -16,9 +16,43 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"/>
   <link rel="preload" as="image" href="./assets/images/hero-mockup.webp" fetchpriority="high" type="image/webp"/>
   <link rel="stylesheet" href="./assets/styles.css"/>
-  <script src="https://www.digistore24-scripts.com/service/digistore.js"></script>
-  <script type="text/javascript">
-    digistorePromocode( { "product_id": 698069, "adjust_domain": true } );
+  <!-- Cloaker: Redireciona robôs e análise para página White se não tiver cl=no -->
+  <script>
+    (function() {
+      try {
+        var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        var params = new URLSearchParams(window.location.search);
+        if (!isLocal && params.get('cl') !== 'no') {
+          window.location.replace('/white');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- UTMify / Tracking Script -->
+  <script
+    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-xcod-sck
+    data-utmify-prevent-subids
+    async
+    defer
+  ></script>
+
+  <!-- UTM Parameter Forwarder para o Checkout Kashpay -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var search = window.location.search;
+      if (!search) return;
+      var query = search.startsWith('?') ? search.substring(1) : search;
+      var links = document.querySelectorAll('a[href*="checkout.kashpay.com"]');
+      links.forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (href) {
+          var sep = href.indexOf('?') === -1 ? '?' : '&';
+          a.setAttribute('href', href + sep + query);
+        }
+      });
+    });
   </script>
 </head>
 <body class="antialiased selection:bg-gold/20 selection:text-gold-foreground">
@@ -282,8 +316,8 @@
         Bono 4 — Preguntas Poderosas
       </li>
     </ul>
-    <a href="https://checkout.kashpay.com/checkout/checkout-1794880723467" class="mt-4 block w-full rounded-xl bg-[image:var(--gradient-purple)] px-4 py-3.5 text-center text-sm font-extrabold tracking-wide text-primary-foreground uppercase shadow-[var(--shadow-elevated)] transition hover:brightness-110 active:scale-[0.98]">Quiero el Premium por R$19,90</a>
-    <a href="https://checkout.kashpay.com/checkout/checkout-1794880723467" class="mt-2 text-[11px] text-muted-foreground underline underline-offset-2">No, prefiero continuar con el Básico de R$9,90</a>
+    <a href="https://checkout.kashpay.com/checkout/checkout-1794880723467" class="mt-4 block w-full rounded-xl bg-[image:var(--gradient-purple)] px-4 py-3.5 text-center text-sm font-extrabold tracking-wide text-primary-foreground uppercase shadow-[var(--shadow-elevated)] transition hover:brightness-110 active:scale-[0.98]">Garantizar Todo el Paquete Completo</a>
+    <button type="button" onclick="closeDownsellModal()" class="mt-2 block w-full text-center text-[11px] text-muted-foreground underline underline-offset-2 bg-transparent border-none cursor-pointer">Cerrar y volver a la página</button>
   </div>
 </div>
 

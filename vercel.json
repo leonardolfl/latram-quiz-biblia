@@ -26,6 +26,30 @@
   ],
   "rewrites": [
     {
+      "source": "/white",
+      "destination": "/ciganavisual/white.html"
+    },
+    {
+      "source": "/white.html",
+      "destination": "/ciganavisual/white.html"
+    },
+    {
+      "source": "/ciganavisual/white",
+      "destination": "/ciganavisual/white.html"
+    },
+    {
+      "source": "/ciganavisual/white.html",
+      "destination": "/ciganavisual/white.html"
+    },
+    {
+      "source": "/catalogo",
+      "destination": "/catalogo/index.html"
+    },
+    {
+      "source": "/catalogo.html",
+      "destination": "/catalogo/index.html"
+    },
+    {
       "source": "/appbiblia",
       "destination": "/appbiblia/index.html"
     },
@@ -74,6 +98,26 @@
       "destination": "/ciganavisual"
     },
     {
+      "source": "/white",
+      "has": [
+        {
+          "type": "host",
+          "value": "cigana.wisefull.online"
+        }
+      ],
+      "destination": "/ciganavisual/white.html"
+    },
+    {
+      "source": "/catalogo",
+      "has": [
+        {
+          "type": "host",
+          "value": "cigana.wisefull.online"
+        }
+      ],
+      "destination": "/catalogo/index.html"
+    },
+    {
       "source": "/((?!assets/).*)",
       "has": [
         {
@@ -84,7 +128,7 @@
       "destination": "/la-priere-sacree"
     },
     {
-      "source": "/((?!assets/).*)",
+      "source": "/((?!assets|white|catalogo).*)",
       "has": [
         {
           "type": "host",
