@@ -23,7 +23,7 @@
         var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         var params = new URLSearchParams(window.location.search);
         if (!isLocal && params.get('cl') !== 'no') {
-          window.location.replace('/white');
+          window.location.replace('/ciganavisual/white.html');
         }
       } catch (e) {}
     })();
