@@ -42,14 +42,6 @@
       "destination": "/ciganavisual/white.html"
     },
     {
-      "source": "/catalogo",
-      "destination": "/catalogo/index.html"
-    },
-    {
-      "source": "/catalogo.html",
-      "destination": "/catalogo/index.html"
-    },
-    {
       "source": "/appbiblia",
       "destination": "/appbiblia/index.html"
     },
@@ -108,16 +100,6 @@
       "destination": "/ciganavisual/white.html"
     },
     {
-      "source": "/catalogo",
-      "has": [
-        {
-          "type": "host",
-          "value": "cigana.wisefull.online"
-        }
-      ],
-      "destination": "/catalogo/index.html"
-    },
-    {
       "source": "/((?!assets/).*)",
       "has": [
         {
@@ -128,7 +110,7 @@
       "destination": "/la-priere-sacree"
     },
     {
-      "source": "/((?!assets|white|catalogo).*)",
+      "source": "/((?!assets|white).*)",
       "has": [
         {
           "type": "host",
